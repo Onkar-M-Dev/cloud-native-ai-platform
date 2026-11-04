@@ -28,11 +28,9 @@ services:
   db_service:
     image: postgres:14.18
     restart: unless-stopped
-    ports:
-      - 5432:5432
     environment:
       - POSTGRES_USER=dbuser
-      - POSTGRES_PASSWORD=db-password
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       - POSTGRES_DB=MYDB
   #  env_file:
   #    - .env.sample-db

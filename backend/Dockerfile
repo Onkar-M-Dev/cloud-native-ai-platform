@@ -8,7 +8,7 @@ ENV PATH=/opt/venv/bin:$PATH
 WORKDIR /app
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+RUN pip install --default-timeout=120 --retries=10 -r /tmp/requirements.txt
 
 COPY ./src .
 
